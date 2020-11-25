@@ -34,29 +34,29 @@
             <div class="d-lg-flex flex-column align-items-center justify-content-between">
                 <div class="col-lg-6 col-sm-12 form-group">
                     <label for="exampleInputEmail1">Nom Complet <span class="obliger">*</span> </label>
-                    <input type="text" class="form-control" placeholder="Ex: MOUKEYTOU Regis">
+                    <input type="text" class="form-control" placeholder="Ex: MOUKEYTOU Regis" required>
                     <small id="emailHelp" class="form-text text-danger">
                         Cet email existe deja
                     </small>
                 </div>
                 <div class="col-lg-6 col-sm-12 form-group">
                     <label for="exampleInputEmail1">Addresse mail <span class="obliger">*</span></label>
-                    <input type="text" class="form-control" placeholder="Ex: moukeytouregis@gmail.com">
+                    <input type="text" class="form-control" placeholder="Ex: moukeytouregis@gmail.com" required>
                 </div>
             </div>
 
             <div class="d-lg-flex flex-column align-items-center justify-content-center">
                 <div class="col-lg-6 col-sm-12 form-group">
                     <label for="">Genre <span class="obliger">*</span></label>
-                    <select class="custom-select">
-                        <option disabled selected>Choississez votre sexe</option>
-                        <option value="H">Homme</option>
+                    <select class="custom-select" required>
+                        <option disabled >Choississez votre sexe</option>
+                        <option value="H" selected>Homme</option>
                         <option value="F">Femme</option>
                     </select>
                 </div>
                 <div class="col-lg-6 col-sm-12 form-group">
                     <label for="exampleInputEmail1">Numero de Telephone <span class="obliger">*</span></label>
-                    <input type="tel" class="form-control" placeholder="Ex: +24100 00 00" />
+                    <input type="tel" class="form-control" placeholder="Ex: +24100 00 00" required />
                 </div>
             </div>
 
@@ -65,7 +65,7 @@
 
 
         <section class="tab dimension">
-            <div class="form-group">
+            <div class="form-group espace">
                 <label for="">Votre domaine d'activite <span class="obliger">*</span></label>
                 <select class="custom-select">
                     <!-- <option disabled selected>Choississez votre sexe</option>
@@ -97,17 +97,17 @@
                 </select>
             </div>
 
-            <div class="form-group">
+            <div class="form-group espace">
                 <label for="">Preferez vous apprendre en ligne ou en presentiel <span class="obliger">*</span></label>
-                <select name="type_cours" required class="custom-select">
-                    <option>En presentiel</option>
-                    <option>En ligne</option>
+                <select name="type_cours" required class="custom-select" id="cours">
+                    <option value="P">En presentiel</option>
+                    <option value="L">En ligne</option>
                 </select>
             </div>
 
-            <div class="form-group">
+            <div class="form-group espace">
                 <label for="">Modalite de paiement <span class="obliger">*</span></label>
-                <select name="type_cours" required class="custom-select">
+                <select name="type_cours" required class="custom-select" id="modalite">
                     <option value="1">1 Tranche</option>
                     <option value="2">2 Tranches</option>
                     <option value="3">3 Tranches</option>
@@ -135,6 +135,19 @@
             <a href="https://ecole241.org" class="footerBadge footerBadge--production">Réalisé par <span>Ecole 241</span></a>
         </div>
     </footer>
+
+    <script>
+        const typeCoursElt = document.getElementById('cours');
+        const modaliteElt = document.getElementById('modalite');
+        typeCoursElt.onchange = e => {
+            if (e.target.value == 'L') {
+                modaliteElt.setAttribute('disabled', true);
+                modaliteElt.value = "1"
+            } else {
+                modaliteElt.removeAttribute('disabled');
+            }
+        }
+    </script>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
